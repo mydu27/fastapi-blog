@@ -25,14 +25,3 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-
-
-/app/api/api_admin/endpoints/static_vote/
-
-/app/api/api_diagnose/endpoints/static_vote/
-/app/logs/
-*/logs/
-/app/static_vote/
-../docker-compose_旧版本.yml
-/app/privkey.pem
-/app/pubkey.pem
