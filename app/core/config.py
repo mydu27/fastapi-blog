@@ -28,7 +28,7 @@ class Settings(BaseSettings):
     # postgresql
     POSQL_HOST: str = "172.16.10.184"
     POSQL_PORT: int = 6432
-    POSQL_DB: str = "testtt"
+    POSQL_DB: str = "fastapi_blog"
     POSQL_USER: str = "postgres"
     POSQL_PWD: str = "123456"
 

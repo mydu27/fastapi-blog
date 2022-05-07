@@ -1,0 +1,57 @@
+version: '2'
+services:
+  redis:
+    container_name: redis
+    image: redis:5.0.9-alpine3.11
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - ${R_PORT}:6379
+    volumes:
+      - /etc/redis/data/:/data/
+      - /etc/localtime:/etc/localtime
+
+  postgresql:
+    container_name: postgre
+    image: postgres:9.4
+    privileged: true
+    command: postgres -c 'max_connections=500'
+    environment:
+      TZ: Asia/Shanghai
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "fastapi_blog"
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_HOST: '%'
+    ports:
+      - ${POSTGRES_PORT}:5432
+    volumes:
+      - ${POSTGRES_DATA}:/var/lib/postgresql/data/
+    security_opt:
+      - seccomp:unconfined
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
+
+  fastapi_blog:
+    container_name: ${IMAGE_NAME}
+    build: ${BUILD_PATH}
+    image: ${IMAGE_NAME}:${VERSION}
+    ports:
+      - ${FASTAPI_BLOG_PORT}:8090
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
+    restart: unless-stopped
+    links:
+      - postgresql:postgresql
+      - redis:redis
+
+networks:
+  default:
+    external:
+      name: ${DOCKER_NETWORK}
