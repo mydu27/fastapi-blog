@@ -9,4 +9,4 @@ WORKDIR /home/fastapi-blog
 # 安装项目依赖文件到容器
 RUN pip install -r /home/fastapi-blog/requirements.txt -i https://pypi.douban.com/simple
 
-CMD ["uvicorn", "diagnose.app.main:app", "--host", "0.0.0.0", "--port", "8090"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8090"]
