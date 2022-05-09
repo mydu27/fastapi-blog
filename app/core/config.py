@@ -26,7 +26,7 @@ class Settings(BaseSettings):
     REDIS_TIME_OUT_FOR_THIRD = 259200  # 第三方时间默认3x24小时
 
     # postgresql
-    POSQL_HOST: str = "postgres"
+    POSQL_HOST: str = "postgresql"
     POSQL_PORT: int = 5432
     POSQL_DB: str = "fastapi_blog"
     POSQL_USER: str = "postgres"
