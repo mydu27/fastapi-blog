@@ -19,15 +19,15 @@ class Settings(BaseSettings):
     FIXED_SECRET_KEY: str = "JrK6vcHGNANDyr02gph8bALGeWygps2YcyCNDQInEAg"
 
     # redis
-    REDIS_HOST: str = "127.0.0.1"
-    REDIS_PORT: int = 6379
+    REDIS_HOST: str = "redis"
+    REDIS_PORT: int = 5379
     REDIS_DB: int = 10
     REDIS_TIME_OUT: int = 86400  # 缓存时间默认24小时
     REDIS_TIME_OUT_FOR_THIRD = 259200  # 第三方时间默认3x24小时
 
     # postgresql
-    POSQL_HOST: str = "172.16.10.184"
-    POSQL_PORT: int = 6432
+    POSQL_HOST: str = "postgres"
+    POSQL_PORT: int = 5432
     POSQL_DB: str = "fastapi_blog"
     POSQL_USER: str = "postgres"
     POSQL_PWD: str = "123456"
